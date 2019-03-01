@@ -7,15 +7,19 @@ import { QuizComponent } from './quiz/quiz.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HighlightJsModule } from 'ngx-highlight-js';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { AddQueComponent } from './add-que/add-que.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    QuizComponent
+    QuizComponent,
+    AddQueComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule,HighlightJsModule 
+    HttpClientModule,HighlightJsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

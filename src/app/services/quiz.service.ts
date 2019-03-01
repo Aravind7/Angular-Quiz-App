@@ -34,5 +34,10 @@ export class QuizService {
         .pipe(map(res => res));
   }
 
+  addQuestion(model){
+    return this.http.post("https://localhost:5001/api/Quiz/addQuestion",model)
+        .pipe(map(res => res));
+  }
+
 }
 

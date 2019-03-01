@@ -1,0 +1,46 @@
+<p>
+  add-que works!
+</p>
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h3>Add Question</h3>
+                <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                    <div class="form-group">
+                        <label for="Quecategory">Question Category ID</label>
+                        <input type="text" class="form-control" name="Quecategory" [(ngModel)]="model.Quecategory" #Quecategory="ngModel" [ngClass]="{ 'is-invalid': f.submitted && Quecategory.invalid }" required />
+                        <div *ngIf="f.submitted && Quecategory.invalid" class="invalid-feedback">
+                            <div *ngIf="Quecategory.errors.required">Quecategory is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="Questions"></label>
+                      <textarea class="form-control" name="Questions" id="questu" [(ngModel)]="model.Questions" #Questions="ngModel" rows="3" [ngClass]="{ 'is-invalid': f.submitted && Questions.invalid }" required ></textarea>
+                       <div *ngIf="f.submitted && Questions.invalid" class="invalid-feedback">
+                            <div *ngIf="Questions.errors.required">Questions is required</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="isActive">IsActive</label>
+                        <input type="text" class="form-control" name="isActive" [(ngModel)]="model.isActive" #isActive="ngModel" [ngClass]="{ 'is-invalid': f.submitted && isActive.invalid }" required />
+                        <div *ngIf="f.submitted && isActive.invalid" class="invalid-feedback">
+                            <div *ngIf="isActive.errors.required">isActive is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="QuestionTypeid">Question Type Id</label>
+                        <input type="text" class="form-control" name="QuestionTypeid" [(ngModel)]="model.QuestionTypeid" #QuestionTypeid="ngModel" [ngClass]="{ 'is-invalid': f.submitted && QuestionTypeid.invalid }" required />
+                        <div *ngIf="f.submitted && QuestionTypeid.invalid" class="invalid-feedback">
+                            <div *ngIf="QuestionTypeid.errors.required">QuestionTypeid is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button (click) = "onSubmit(model)" class="btn btn-primary">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
