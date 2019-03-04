@@ -9,17 +9,40 @@ import { HighlightJsModule } from 'ngx-highlight-js';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AddQueComponent } from './add-que/add-que.component';
+import { RouterModule, Routes } from '@angular/router';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+
+
+const appRoutes: Routes = [
+  { path: 'addQuestion', component:  AddQueComponent},
+  {
+    path: 'quiz',
+    component: QuizComponent,
+    data: { title: 'Heroes List' }
+  },
+  { path: '',
+    redirectTo: '/quiz',
+    pathMatch: 'full'
+  },
+  { path: '**', component: PagenotfoundComponent }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     QuizComponent,
-    AddQueComponent
+    AddQueComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule,HighlightJsModule
+    HttpClientModule,HighlightJsModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    ),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

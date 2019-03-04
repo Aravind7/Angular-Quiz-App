@@ -15,7 +15,7 @@ export class AddQueComponent implements OnInit {
   }
 
   onSubmit(model) {
-    //alert('Adding!! :-)\n\n' + JSON.stringify(this.model))
+    alert('Adding!! :-)\n\n' + JSON.stringify(this.model))
     this.quizService.addQuestion(model).subscribe(() => {
 
     })
