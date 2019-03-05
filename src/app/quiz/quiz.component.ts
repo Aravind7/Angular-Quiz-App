@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../services/quiz.service';
 import { HelperService } from '../services/helper.service';
 import { Option, Question, Quiz, QuizConfig } from '../models/index';
-import {quizcategory} from '../models/quizcategory'
+import {quizcategory} from '../models/quizcategory';
+import * as jspdf from 'jspdf';
+import html2canvas from 'html2canvas'; 
 
 @Component({
   selector: 'app-quiz',
@@ -123,6 +125,8 @@ export class QuizComponent implements OnInit {
     // Post your data to the server here. answers contains the questionId and the users' answer.
     console.log(this.quiz.questions);
     this.mode = 'result';
+    console.log("Result Opened---------------------------------------------------------")
+    
   }
 
   loadQuizCategoryApi() {
@@ -158,6 +162,23 @@ export class QuizComponent implements OnInit {
     });
     this.mode = 'quiz';
   }
+
+
+  htmltoPDF()
+{
+  console.log("**********************PDF COnversion Starts*****************************")
+    // parentdiv is the html element which has to be converted to PDF
+    html2canvas(document.querySelector("#contentToConvert")).then(canvas => {
+
+      var pdf = new jspdf('p', 'pt', [canvas.width, canvas.height]);
+
+      var imgData  = canvas.toDataURL("image/jpeg", 1.0);
+      pdf.addImage(imgData,0,0,canvas.width, canvas.height);
+      pdf.save('QuizResults.pdf');
+
+  });
+
+}
 
  
 }

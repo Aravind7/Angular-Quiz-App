@@ -11,6 +11,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AddQueComponent } from './add-que/add-que.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import * as jspdf from 'jspdf';
+import html2canvas from 'html2canvas'; 
 
 
 const appRoutes: Routes = [
@@ -41,8 +43,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
-    ),
-    BrowserAnimationsModule
+    )
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
