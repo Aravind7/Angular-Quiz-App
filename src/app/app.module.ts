@@ -13,12 +13,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas'; 
+import {AuthGuard} from './auth.guard';
+import { LoginComponent } from './login/login.component';
 
 
 const appRoutes: Routes = [
   { path: 'addQuestion', component:  AddQueComponent},
   {
     path: 'quiz',
+    canActivate : [AuthGuard],
     component: QuizComponent,
     data: { title: 'Heroes List' }
   },
@@ -26,6 +29,7 @@ const appRoutes: Routes = [
     redirectTo: '/quiz',
     pathMatch: 'full'
   },
+  { path: 'login', component:  LoginComponent},
   { path: '**', component: PagenotfoundComponent }
 ];
 
@@ -34,7 +38,8 @@ const appRoutes: Routes = [
     AppComponent,
     QuizComponent,
     AddQueComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,7 @@ const appRoutes: Routes = [
     )
     
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -55,7 +55,12 @@
   </div>
   <div class="result" id="contentToConvert" *ngIf="mode=='result'">
     <h2>Quiz Result</h2>
-   <button class="btn btn-default" (click)="htmltoPDF()">PDF</button>
+  
+  <div align="right">
+    <button align="right" class="btn btn-default" (click)="htmltoPDF()">PDF</button>
+  </div>
+   
+   
     <div *ngFor="let question of quiz.questions; let index = index">
       <div class="result-question">
         <h5>{{index + 1}}. {{question.name}}</h5>
